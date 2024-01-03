@@ -1,0 +1,81 @@
+body {
+  font-size: 20px;
+  font-family: Poppins;
+  height: 100%;
+}
+
+[class*="__container"] {
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 0px 15px;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+}
+
+// Header 
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: rgb(164, 163, 163);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .header_title {
+    font-size: 30px;
+  }
+}
+
+// InputTodo
+.main_content {
+  margin: 20px 0px;
+  border: 2px solid black;
+  width: 500px;
+  height: auto;
+  border-radius: 15px;
+  padding: 20px;
+}
+.inpTodo {
+  width: 250px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+// TaskTodo
+.iconClose {
+  width: 20px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnTodoAdd {
+  border: 1px solid black;
+  margin-left: 10px;
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  background-color: lightcoral;
+}
+.btnDel {
+  margin-left: auto;
+}
+.task_content {
+  margin: 15px 0px;
+  border: 1px solid black;
+  max-width: auto;
+  height: auto;
+  padding: 0px 10px;
+  border-radius: 15px;
+  display: flex;
+  column-gap: 20px;
+  cursor: pointer;
+}

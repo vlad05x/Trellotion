@@ -1,7 +1,7 @@
-import { useState } from "react";
+// App.js
+import React, { useState } from "react";
 import { Header } from "./components/Header";
-import { InputTodo } from "./components/InputTodo";
-import { TaskTodo } from "./components/TaskTodo";
+import TodoContainer from "./components/TodoContainer";
 
 function App() {
   const [todo, setTodo] = useState("");
@@ -15,27 +15,32 @@ function App() {
     };
     let newTask = [taskTodo, ...tasks];
     setTasks(newTask);
-    setTodo("")
+    setTodo("");
   };
 
   const deleteTask = (id) => {
-      let del = tasks.filter(e => e.id !== id)
-      setTasks(del)
+    let del = tasks.filter((e) => e.id !== id);
+    setTasks(del);
   };
 
   const toggleTask = (id) => {
-    let toggle = tasks.map(e => e.id === id ? {...e, status : !e.status } : {...e})
-    setTasks(toggle)
+    let toggle = tasks.map((e) =>
+      e.id === id ? { ...e, status: !e.status } : { ...e }
+    );
+    setTasks(toggle);
   };
 
-  const taskTodoList = tasks.map((e) => (
-    <TaskTodo id={e.id} text={e.text} status={e.status} deleteTask={deleteTask} toggleTask={toggleTask} />
-  ));
   return (
     <div className="App">
       <Header />
-      <InputTodo addTask={addTask} todo={todo} setTodo={setTodo} />
-      {taskTodoList}
+      <TodoContainer
+        tasks={tasks}
+        todo={todo}
+        setTodo={setTodo}
+        addTask={addTask}
+        toggleTask={toggleTask}
+        deleteTask={deleteTask}
+      />
     </div>
   );
 }

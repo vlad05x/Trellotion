@@ -1,12 +1,15 @@
 import React from "react";
+import { MdClose } from "react-icons/md";
 
 export const TaskTodo = (props) => {
     return (
-        <div key={props.id}>
-            <input type={"checkbox"} onClick={() => props.toggleTask(props.id)} defaultChecked={props.status}></input>
+        <div className="task__container">
+           <div key={props.id} className="task_content">
+            <input className="intFlag" type={"checkbox"} onClick={() => props.toggleTask(props.id)} defaultChecked={props.status}></input>
             <p style={props.status ? {textDecoration: "line-through"} : {textDecoration: "none"} }>{props.text}</p>
-            <button onClick={() => props.deleteTask(props.id) }>X</button>
+            <button className="btnDel" onClick={() => props.deleteTask(props.id) }><MdClose className="iconClose" /></button>
         </div>
+    </div>
     )
 }
 

@@ -2,9 +2,11 @@
 
 export const Header = () => {
     return (
-        <div>
-            <h1>Welcome to Trellotion</h1>
-        </div>
+        <header className="header">
+            <div className="header__container">
+                <h1 className="header_title">Welcome to Trellotion</h1>
+            </div>
+        </header>
     )
 }
 
