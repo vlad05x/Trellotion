@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/Trellotion/static/js/main.aaef0677.js",
+    "main.css": "/Trellotion/static/css/main.dcd0edf1.css",
+    "main.js": "/Trellotion/static/js/main.3d4f8e94.js",
     "index.html": "/Trellotion/index.html",
-    "main.aaef0677.js.map": "/Trellotion/static/js/main.aaef0677.js.map"
+    "main.dcd0edf1.css.map": "/Trellotion/static/css/main.dcd0edf1.css.map",
+    "main.3d4f8e94.js.map": "/Trellotion/static/js/main.3d4f8e94.js.map"
   },
   "entrypoints": [
-    "static/js/main.aaef0677.js"
+    "static/css/main.dcd0edf1.css",
+    "static/js/main.3d4f8e94.js"
   ]
 }
