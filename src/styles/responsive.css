@@ -1,0 +1,13 @@
+@media screen and (max-width:650px){
+    .main .main_content {
+        margin: 40px auto;
+    }
+}
+@media screen and (max-width:375px){
+    .header {
+        height: 75px;
+    }
+    .header .header_title {
+        font-size: 28px;
+    }
+}

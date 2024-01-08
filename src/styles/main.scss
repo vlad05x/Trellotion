@@ -1,7 +1,26 @@
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(153, 195, 34);
+  background: linear-gradient(
+      0deg,
+      rgba(153, 195, 34, 1) 8%,
+      rgba(255, 192, 57, 1) 100%
+    )
+    center/cover no-repeat;
+  z-index: -1;
+}
+
 body {
+  height: 100%;
   font-size: 20px;
   font-family: Poppins;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 [class*="__container"] {
@@ -16,12 +35,11 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-// Header 
+// Header
 .header {
   width: 100%;
-  height: 100px;
-  background-color: rgb(164, 163, 163);
+  height: 60px;
+  background-color: rgba(81, 81, 81, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,52 +48,102 @@ body {
     font-size: 30px;
   }
 }
+// Main
+.main {
+  width: 100%;
+  height: 100%;
 
-// InputTodo
-.main_content {
-  margin: 20px 0px;
-  border: 2px solid black;
-  width: 500px;
-  height: auto;
-  border-radius: 15px;
-  padding: 20px;
+  .main_content {
+    margin: 40px 0px;
+    border: 2px solid black;
+    background-color: #101204;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    padding: 20px;
+  }
 }
+
+// InputToDo
 .inpTodo {
-  width: 250px;
-  height: 25px;
-  border: 1px solid black;
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid orange;
+  border-top: 1px solid orange;
+  color: #b6c2cf;
   border-radius: 5px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
+}
+input[type="checkbox"] {
+  transform: scale(1.2);
+  opacity: 0.9;
 }
 
 // TaskTodo
 .iconClose {
   width: 20px;
-  height: auto;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.btnTodoAdd {
-  border: 1px solid black;
-  margin-left: 10px;
-  width: 150px;
-  height: auto;
-  border-radius: 10px;
-  background-color: lightcoral;
+  color: #c9b6cf;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-50%) scale(1.2);
+  }
 }
 .btnDel {
   margin-left: auto;
 }
+.btnTodoAdd {
+  margin-top: 15px;
+  border: none;
+  width: 100%;
+  height: auto;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: #b6c2cf;
+  &:hover {
+    background-color: rgba(81, 81, 81, 0.5);
+  }
+}
 .task_content {
+  position: relative;
   margin: 15px 0px;
   border: 1px solid black;
-  max-width: auto;
-  height: auto;
-  padding: 0px 10px;
+  background-color: #22272b;
+  max-width: 250px;
+  width: 100%;
+  max-height: auto;
+  height: 40px;
+  padding: 30px 10px;
   border-radius: 15px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   column-gap: 20px;
   cursor: pointer;
+}
+.textInpt {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #b6c2cf;
+  overflow-wrap: break-word;
+}
+.Inpt_title {
+  width: auto;
+  max-width: 200px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid black;
+  font-size: 16px;
+  font-weight: bold;
+  color: #b6c2cf;
 }

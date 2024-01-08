@@ -1,11 +1,22 @@
 // App.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import TodoContainer from "./components/TodoContainer";
 
 function App() {
   const [todo, setTodo] = useState("");
   const [tasks, setTasks] = useState([]);
+ 
+
+  // LocalStorge for save list
+  useEffect(() => {
+    const saveTask = JSON.parse(localStorage.getItem("items")) || [];
+    setTasks(saveTask);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = () => {
     const taskTodo = {
