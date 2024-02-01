@@ -5,53 +5,100 @@ import TodoContainer from "./components/TodoContainer";
 
 function App() {
   const [todo, setTodo] = useState("");
-  const [tasks, setTasks] = useState([]);
- 
-
-  // LocalStorge for save list
-  useEffect(() => {
-    const saveTask = JSON.parse(localStorage.getItem("items")) || [];
-    setTasks(saveTask);
-  }, []);
+  const [blocks, setBlocks] = useState(() => {
+    const storedBlocks = JSON.parse(localStorage.getItem("blocks")) || [
+      { id: 1, tasks: [] },
+    ];
+    return storedBlocks;
+  });
 
   useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(tasks));
-  }, [tasks]);
+    localStorage.setItem("blocks", JSON.stringify(blocks));
+  }, [blocks]);
 
-  const addTask = () => {
+  const addBlock = () => {
+    const newBlock = {
+      id: blocks.length + 1,
+      tasks: [],
+    };
+    setBlocks((prevBlocks) => [...prevBlocks, newBlock]);
+  };
+
+  const addTask = (blockId) => {
     const taskTodo = {
       id: Math.random(),
       text: todo,
       status: false,
     };
-    let newTask = [taskTodo, ...tasks];
-    setTasks(newTask);
+    setBlocks((prevBlocks) =>
+      prevBlocks.map((block) =>
+        block.id === blockId
+          ? { ...block, tasks: [taskTodo, ...block.tasks] }
+          : block
+      )
+    );
     setTodo("");
   };
 
-  const deleteTask = (id) => {
-    let del = tasks.filter((e) => e.id !== id);
-    setTasks(del);
+  const deleteTask = (blockId, taskId) => {
+    setBlocks((prevBlocks) =>
+      prevBlocks.map((block) =>
+        block.id === blockId
+          ? {
+              ...block,
+              tasks: block.tasks.filter((task) => task.id !== taskId),
+            }
+          : block
+      )
+    );
   };
 
-  const toggleTask = (id) => {
-    let toggle = tasks.map((e) =>
-      e.id === id ? { ...e, status: !e.status } : { ...e }
+  const deleteBlock = (blockId) => {
+    setBlocks((prevBlocks) =>
+      prevBlocks.filter((block) => block.id !== blockId)
     );
-    setTasks(toggle);
+  };
+
+  const toggleTask = (blockId, taskId) => {
+    setBlocks((prevBlocks) =>
+      prevBlocks.map((block) =>
+        block.id === blockId
+          ? {
+              ...block,
+              tasks: block.tasks.map((task) =>
+                task.id === taskId ? { ...task, status: !task.status } : task
+              ),
+            }
+          : block
+      )
+    );
   };
 
   return (
     <div className="App">
       <Header />
-      <TodoContainer
-        tasks={tasks}
-        todo={todo}
-        setTodo={setTodo}
-        addTask={addTask}
-        toggleTask={toggleTask}
-        deleteTask={deleteTask}
-      />
+      <div className="main_box"> 
+      <div className="btn_content">
+        <button className="btnBlockAdd" onClick={addBlock}>
+          Добавить блок
+        </button>
+      </div>
+         
+        {blocks.map((block) => (
+          <TodoContainer
+            key={block.id}
+            blockId={block.id}
+            tasks={block.tasks}
+            todo={todo}
+            setTodo={setTodo}
+            addTask={addTask}
+            toggleTask={toggleTask}
+            deleteTask={deleteTask}
+            deleteBlock={deleteBlock}
+            addBlock={addBlock}
+          />
+        ))}
+      </div>
     </div>
   );
 }

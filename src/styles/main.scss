@@ -35,27 +35,55 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+$color_orange: orange;
+$color_black: black;
+
 // Header
 .header {
-  width: 100%;
-  height: 60px;
+  width: 100vw;
+  height: 70px;
   background-color: rgba(81, 81, 81, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
-
+  position: fixed;
+  z-index: 20;
   .header_title {
-    font-size: 30px;
+    font-size: 36px;
   }
 }
 // Main
+.main_box {
+  display: flex;
+  align-items: center;
+}
+.btn_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnBlockAdd {
+  width: 100vh;
+  height: 50px;
+  max-width: 200px;
+  margin: 100px 40px;
+  border-radius: 10px;
+  background-color: $color_black;
+  color: white;
+  top: 0;
+
+  &:hover {
+    background-color: rgba(81, 81, 81, 0.8);
+  }
+}
 .main {
   width: 100%;
   height: 100%;
 
   .main_content {
-    margin: 40px 0px;
-    border: 2px solid black;
+    margin: 150px 20%;
+    border: 2px solid $color_black;
     background-color: #101204;
     max-width: 300px;
     width: 100%;
@@ -69,8 +97,8 @@ body {
 .inpTodo {
   width: 100%;
   height: 30px;
-  border-bottom: 1px solid orange;
-  border-top: 1px solid orange;
+  border-bottom: 1px solid $color_orange;
+  border-top: 1px solid $color_orange;
   color: #b6c2cf;
   border-radius: 5px;
   padding: 10px;
@@ -94,7 +122,21 @@ input[type="checkbox"] {
   top: 50%;
   transform: translateY(-50%);
   transition: transform 0.2s ease;
-
+  &:hover {
+    transform: translateY(-50%) scale(1.2);
+  }
+}
+.iconCloseBlock {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color_orange;
+  float: right;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+  cursor: pointer;
   &:hover {
     transform: translateY(-50%) scale(1.2);
   }
@@ -106,7 +148,7 @@ input[type="checkbox"] {
   margin-top: 15px;
   border: none;
   width: 100%;
-  height: auto;
+  height: 40px;
   font-size: 16px;
   font-weight: 600;
   border-radius: 10px;
@@ -118,7 +160,7 @@ input[type="checkbox"] {
 .task_content {
   position: relative;
   margin: 15px 0px;
-  border: 1px solid black;
+  border: 1px solid $color_black;
   background-color: #22272b;
   max-width: 250px;
   width: 100%;
@@ -142,7 +184,7 @@ input[type="checkbox"] {
   width: auto;
   max-width: 200px;
   margin-bottom: 15px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $color_black;
   font-size: 16px;
   font-weight: bold;
   color: #b6c2cf;
