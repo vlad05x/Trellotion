@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import TodoContainer from "./components/TodoContainer";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [todo, setTodo] = useState("");
@@ -16,13 +17,13 @@ function App() {
     localStorage.setItem("blocks", JSON.stringify(blocks));
   }, [blocks]);
 
-  const addBlock = () => {
-    const newBlock = {
-      id: blocks.length + 1,
-      tasks: [],
-    };
-    setBlocks((prevBlocks) => [...prevBlocks, newBlock]);
+const addBlock = () => {
+  const newBlock = {
+    id: uuidv4(),
+    tasks: [],
   };
+  setBlocks((prevBlocks) => [...prevBlocks, newBlock]);
+};
 
   const addTask = (blockId) => {
     const taskTodo = {
