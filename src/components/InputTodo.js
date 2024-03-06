@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 
 export const InputTodo = (props) => {
   const [listTitle, setListTitle] = useState("");
+  const [inputTodoValue, setInputTodoValue] = useState("");
+  const inputId = `inpTodo_${props.blockId}`;
 
   useEffect(() => {
     const storedListTitle =
@@ -16,8 +18,15 @@ export const InputTodo = (props) => {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      props.addTask(props.blockId);
+      e.preventDefault();
+      props.addTask(props.blockId, inputTodoValue);
+      setInputTodoValue("");
     }
+  };
+
+  const handleAddTask = () => {
+    props.addTask(props.blockId, inputTodoValue);
+    setInputTodoValue("");
   };
 
   return (
@@ -33,14 +42,12 @@ export const InputTodo = (props) => {
           <br />
           <input
             className="inpTodo"
-            value={props.todo}
-            onChange={(e) => props.setTodo(e.target.value)}
+            id={inputId}
+            value={inputTodoValue}
+            onChange={(e) => setInputTodoValue(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          <button
-            className="btnTodoAdd"
-            onClick={() => props.addTask(props.blockId)}
-          >
+          <button className="btnTodoAdd" onClick={handleAddTask}>
             Добавить карточку
           </button>
         </div>

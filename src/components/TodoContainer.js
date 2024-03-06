@@ -8,19 +8,20 @@ const TodoContainer = (props) => {
   const handleDeleteBlock = () => {
     props.deleteBlock(props.blockId);
   };
+
   return (
     <div className="main">
       <div className="main__container">
-          <div className="main_content">
-            <IoCloseCircleSharp
-              className="iconCloseBlock "
-              onClick={handleDeleteBlock}
-            />
-            <InputTodo {...props} blockId={props.blockId} />
-            {props.tasks.map((task) => (
-              <TaskTodo key={task.id} {...task} {...props} />
-            ))}
-          </div>
+        <div className="main_content">
+          <IoCloseCircleSharp
+            className="iconCloseBlock "
+            onClick={handleDeleteBlock}
+          />
+          <InputTodo {...props} blockId={props.blockId} />
+          {props.tasks.map((task) => (
+            <TaskTodo key={task.id} {...task} {...props} />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -25,10 +25,10 @@ const addBlock = () => {
   setBlocks((prevBlocks) => [...prevBlocks, newBlock]);
 };
 
-  const addTask = (blockId) => {
+  const addTask = (blockId, inputTodoValue) => {
     const taskTodo = {
-      id: Math.random(),
-      text: todo,
+      id: uuidv4(),
+      text: inputTodoValue,
       status: false,
     };
     setBlocks((prevBlocks) =>
@@ -74,6 +74,7 @@ const addBlock = () => {
       )
     );
   };
+  
 
   return (
     <div className="App">

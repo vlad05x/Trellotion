@@ -20,7 +20,7 @@ export const TaskTodo = (props) => {
               : { textDecoration: "none" }
           }
         >
-          {props.text}
+          {props.text || props.inputTodoValue}
         </p>
         <button
           className="btnDel"
