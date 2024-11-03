@@ -1,8 +1,8 @@
 import {React} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RegisterForm from './components/Auth/RegisterForm';
-import LoginForm from './components//Auth/LoginForm';
-import Boards from './components/Boards/Boards'; 
+import LoginForm from './components/Auth/LoginForm';
+import Boards from './pages/HomePages';
 import "./App.scss";
 
 function App() {

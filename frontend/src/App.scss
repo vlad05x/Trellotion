@@ -1,4 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:300,regular,500,600,700);
+$primary-color: #0079bf;
+$primary-hover-color: #026aa7;
+$text-color: #f3f3f4;
+$background: #131b2a;
+$background-board: #1f2937;
+$container-bg: #ffffff;
+$container-border: #666666;
+$hover-bg: #7e8086;
+$button-bg: $primary-color;
+$button-color: #ffffff;
+$delete-button-color: #a72c13;
+$delete-button-hover-color: #d9534f;
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +21,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  background-color: $background;
   color: black;
 }
 
@@ -19,7 +33,6 @@ body {
 
 .wrapper {
   min-height: 100%;
-  overflow: clip;
   display: flex;
   flex-direction: column;
 }
